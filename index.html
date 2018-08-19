@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic-Game</title>
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+
+
+</head>
+
+
+<body>
+
+    <div id="game">
+
+        Press any letter (a-z) to start playing.
+
+    </div>
+
+    <!-- Javascript Link -->
+    <script> //src="assets/javascript/game.js"
+
+    var wins = 0; // default value of 0
+    var losses = 0; // default value of 0
+    var userGuess; // declaration that will hold the user's input
+    var guessesLeft = 26;
+    var guessesSoFar = []; // array that will hold the user's current inputs.
+    var userGuessAlreadyInArray = guessesSoFar.includes(userGuess); // boolean to check if present input has already been used.
+
+
+    var validUserInputs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // acceptable inputs
+
+    var userRemainingChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // array that will tick down as user inputs guesses
+
+    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; //computer's available options
+
+    // Computer's Selection
+    var computerSelection = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {      
+    
+    // Determines which key was pressed.
+    userGuess = event.key;
+
+    if (userGuessAlreadyInArray = guessesSoFar.includes(userGuess)) {
+
+    }
+    
+    else{
+    guessesSoFar.push(userGuess.toLowerCase()); // adds to userGuessedArray;
+    guessesLeft--; // removes 1 from guess count
+    var letterIndex = userRemainingChoices.indexOf(userGuess); // declaration of letterIndex to assist with removing Remaining Choices.
+    userRemainingChoices.splice(letterIndex,1); // uses letterIndex to remove index value from Remaining Choices
+
+    }
+
+    //html
+
+            var html =
+
+            "<p>Guess what letter I'm thinking of. </p>" +
+            "<p>Press any letter to start playing </p>" +
+            "<p>Wins: " + wins + "</p>" +
+            "<p>Losses: " + losses + "</p>" +
+            "<p>Guesses Left: " + guessesLeft + "</p>" +
+            "<p>Your Current Input: " + userGuess + "</p>" +    
+            "<p>Your Current Input: " + letterIndex + "</p>" +
+            "<p>Your Guesses so far: " + guessesSoFar + "</p>" +
+            "<p>Current User Guess has already been used: " + userGuessAlreadyInArray + "</p>" +
+            "<p>Your Available Options: " + userRemainingChoices.join(", ") + "</p>" +
+            "<p>Computer Available Section: " + computerChoices.join(", ") + "</p>" +
+            "<p>Computer Section: " + computerSelection + "</p>";
+
+        // Set the inner HTML contents of the #game div to our html string
+        document.querySelector("#game").innerHTML = html;
+      }
+
+          
+    </script>
+    
+</body>
+</html>
