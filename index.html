@@ -22,23 +22,25 @@
 
     <div id="game">
 
-        Press any letter (a-z) to start playing.
+    <h1>Guess any letter (a-z) to start playing.</h1>
 
     </div>
 
     <!-- Javascript Link -->
     <script> //src="assets/javascript/game.js"
 
-    var wins = 0; // default value of 0
-    var losses = 0; // default value of 0
-    var userGuess; // declaration that will hold the user's input
-    var guessesLeft = 26;
+    var wins = 0; // count of wins, default value of 0
+    var losses = 0; // count of losses, default value of 0
+    var userGuessOriginal; // declaration that will hold the user's original input (upper-cased or lower-cased)
+    var userGuess; // user submission as lowercase value
+    var guessesAttempted = 0; //count of user guesses
+    var guessesRemaining = 5; // guesses remaining for the user, default value of 5.
     var guessesSoFar = []; // array that will hold the user's current inputs.
     var userGuessAlreadyInArray = guessesSoFar.includes(userGuess); // boolean to check if present input has already been used.
 
 
     var validUserInputs = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // acceptable inputs
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // acceptable inputs from user
 
     var userRemainingChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
     "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; // array that will tick down as user inputs guesses
@@ -53,19 +55,62 @@
     document.onkeyup = function(event) {      
     
     // Determines which key was pressed.
-    userGuess = event.key;
+    userGuessOriginal = event.key;
 
-    if (userGuessAlreadyInArray = guessesSoFar.includes(userGuess)) {
+    userGuess = userGuessOriginal.toLowerCase();
 
+    //Global functions
+
+    function userWin(){
+        alert("You won! You chose: " + userGuess + " and the computer chose: " + computerSelection +".");
+        wins++;
+        computerSelection = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        guessesAttempted = 0;
+        guessesRemaining = 5;
+        guessesSofar = [];
     }
-    
-    else{
-    guessesSoFar.push(userGuess.toLowerCase()); // adds to userGuessedArray;
-    guessesLeft--; // removes 1 from guess count
-    var letterIndex = userRemainingChoices.indexOf(userGuess); // declaration of letterIndex to assist with removing Remaining Choices.
-    userRemainingChoices.splice(letterIndex,1); // uses letterIndex to remove index value from Remaining Choices
 
+    function userLose(){
+        alert("You lost! Computer chose: " + computerSelection + ".")
+        losses++;
+        computerSelection = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+        guessesAttempted = 0;
+        guessesRemaining = 5;
+        guessesSofar = [];
     }
+
+    function reset(){
+        guessesSoFar.length = 0; // reset the array containing current user inputs.
+    }
+
+
+    // Events
+
+
+    if (validUserInputs.includes(userGuess)){ // if user input is present with the valid array, then proceed
+
+    if (userGuess === computerSelection) {
+        userWin(); // call a function to reset the computer's Guess, userRemaining choices, guessesleft, alert user of win!
+        reset();
+        }
+
+    else {
+
+        if (userGuessAlreadyInArray = guessesSoFar.includes(userGuess)) {
+            alert("You have already guessed this letter. Try another one.") // if user has already attempted a letter, this alert will display.
+        }
+        
+        else{
+        guessesSoFar.push(userGuess.toLowerCase()); // adds to userGuessedArray;
+        guessesRemaining--; // removes 1 from guess count
+        guessesAttempted++; // increases guesses attepted by 1
+        var letterIndex = userRemainingChoices.indexOf(userGuess); // declaration of letterIndex to assist with removing Remaining Choices.
+        userRemainingChoices.splice(letterIndex,1); // uses letterIndex to remove index value from Remaining Choices
+        }
+        
+        }
+        
+
 
     //html
 
@@ -75,20 +120,20 @@
             "<p>Press any letter to start playing </p>" +
             "<p>Wins: " + wins + "</p>" +
             "<p>Losses: " + losses + "</p>" +
-            "<p>Guesses Left: " + guessesLeft + "</p>" +
+            "<p>Guesses Attempted: " + guessesAttempted + "</p>" +
+            "<p>Guesses Remaining: " + guessesRemaining + "</p>" +
             "<p>Your Current Input: " + userGuess + "</p>" +    
-            "<p>Your Current Input: " + letterIndex + "</p>" +
-            "<p>Your Guesses so far: " + guessesSoFar + "</p>" +
+            "<p>Your Current InputIndex: " + letterIndex + "</p>" +
+            "<p>Your Guesses so far: " + guessesSoFar.join(", ") + "</p>" +
             "<p>Current User Guess has already been used: " + userGuessAlreadyInArray + "</p>" +
             "<p>Your Available Options: " + userRemainingChoices.join(", ") + "</p>" +
-            "<p>Computer Available Section: " + computerChoices.join(", ") + "</p>" +
             "<p>Computer Section: " + computerSelection + "</p>";
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
       }
+    }
 
-          
     </script>
     
 </body>
