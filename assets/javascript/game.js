@@ -57,23 +57,23 @@ if (validUserInputs.includes(userGuess)){ // if user input is present with the v
     if ((userGuess === computerSelection) && (guessesRemaining > 0)){ // win scenario               
         userWin(); // call a function to reset the computer's Guess, userRemaining choices, guessesleft, alert user of win!
         reset();
-        }
+    }
 
     else if ((userGuess !== computerSelection) && (guessesRemaining > 1)){ // guess again
 
             if (userGuessAlreadyInArray = guessesSoFar.includes(userGuess)) {
             alert("You have already guessed this letter. Try another one.") // if user has already attempted a letter, this alert will display.
-        }
+            }
         
-        else{
-        guessesSoFar.push(userGuess); // adds to user Guessed Array;
-        guessesRemaining--; // removes 1 from guess count
-        guessesAttempted++; // increases guesses attepted by 1
-        var letterIndex = userRemainingChoices.indexOf(userGuess); // declaration of letterIndex to assist with removing Remaining Choices.
-        userRemainingChoices.splice(letterIndex,1); // uses letterIndex to remove index value from Remaining Choices
-        }
+            else{
+            guessesSoFar.push(userGuess); // adds to user Guessed Array;
+            guessesRemaining--; // removes 1 from guess count
+            guessesAttempted++; // increases guesses attepted by 1
+            var letterIndex = userRemainingChoices.indexOf(userGuess); // declaration of letterIndex to assist with removing Remaining Choices.
+            userRemainingChoices.splice(letterIndex,1); // uses letterIndex to remove index value from Remaining Choices
+            }
 
-        }
+    }
 
     else if ((userGuess !== computerSelection) && (guessesRemaining < 2)) { //  game over scenario when userGuess is incorrect and is final remaining guess
         userLose();
@@ -84,7 +84,7 @@ if (validUserInputs.includes(userGuess)){ // if user input is present with the v
 
             var html =
 
-            "<p>Guess what letter I'm thinking of. Please select a letter from A-Z. </p>" +
+            "<p>Guess what letter I'm thinking of. </p>" +
             "<p>Wins: " + wins + "</p>" +
             "<p>Losses: " + losses + "</p>" +
             "<p>Guesses Attempted: " + guessesAttempted + "</p>" +
