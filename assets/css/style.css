@@ -29,13 +29,17 @@ footer{
     padding:20px;
 }
 
+
 .main-container{
     padding: 20px;
+    max-width: 60%;
+    margin: auto;
+    border: 1px solid lightskyblue;
 }
 
 #left-banner,
 #right-banner{
-    border: 1px solid blue;
+    border: 1px solid lightslategray;
     max-height: 100%;
 }
 
@@ -47,16 +51,12 @@ footer{
 }
 
 h1{
-    font-size: 40px;
     padding: 10px;
 }
 
-h2 {
-    font-size: 20px;
-    padding: 10px;
-}
 
 p{
     margin: auto;
     padding: 10px;
+    font-size: 1.1em; 
 }

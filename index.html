@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
 
 </head>
 
@@ -33,7 +33,8 @@
 
     <div class="collapse" id="collapseInstructions">
     <div class="card card-body">
-        Guess any letter (a-z) to start playing.
+        Computer selects a random letter from the alphabet.
+        Please use your keyboard to guess any letter (a-z) to start playing.
     </div>
     </div>
 
@@ -42,7 +43,7 @@
     <div class = "main-container">
 
         <div class = "row">
-            <div class = "col-md-3">
+            <div class = "col-md-12">
                 <div id = "left-banner">
                         <ul class="list-group">
                                 <li class="list-group-item">
@@ -52,22 +53,26 @@
                                     <p id="losses">Losses: </p>
                                 </li>
                                 <li class="list-group-item">
-                                    <p id="guessLeft">Guesses Left: </p>
+                                    <p id="guessesRemaining">Guesses Remaining: </p>
                                 </li>
                                 <li class="list-group-item">
-                                    <p id="let">Your Guesses so far: </p>
+                                    <p id="guessesAttempted">Guesses Attempted: </p>
+                                </li>
+                                <li class="list-group-item">
+                                    <p id="currentInput">Your Current Guess: </p>
+                                </li>
+                                <li class="list-group-item">
+                                    <p id="guessesSoFar">Your Guesses so far: </p>
+                                <li class="list-group-item">
+                                    <p id="userRemainingChoices">Remaining Choicess: </p>
                                 </li>
                             </ul>
                 </div>
             </div>
 
-            <div class = "col-md-6">
+            <!-- <div class = "col-md-6">
                     <div id="game"></div>
-            </div>
-
-            <div class = "col-md-3">
-                <div id = "right-banner"></div>
-            </div>
+            </div> -->
 
         </div>
     </div>

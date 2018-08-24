@@ -34,6 +34,7 @@ userGuess = userGuessOriginal.toLowerCase(); // converts original input into a l
 function userWin(){
     alert("You won! You chose: " + userGuess + " and the computer chose: " + computerSelection + ".");
     wins++;
+
 }
 
 function userLose(){
@@ -81,24 +82,34 @@ if (validUserInputs.includes(userGuess)){ // if user input is present with the v
     }
                    
     //html
+    //original attempt:
+        //     var html =
 
-            var html =
-
-            "<p>Guess what letter I'm thinking of. </p>" +
-            "<p>Wins: " + wins + "</p>" +
-            "<p>Losses: " + losses + "</p>" +
-            "<p>Guesses Attempted: " + guessesAttempted + "</p>" +
-            "<p>Guesses Remaining: " + guessesRemaining + "</p>" +
-            "<p>Your Current Input: " + userGuess + "</p>" +    
-            // "<p>Your Current InputIndex: " + letterIndex + "</p>" +
-            "<p>Your Guesses so far: " + guessesSoFar.join(", ") + "</p>" +
-            //"<p>Current User Guess has already been used: " + userGuessAlreadyInArray + "</p>" +
-            "<p>Your Available Options: " + userRemainingChoices.join(", ") + "</p>";
-            //"<p>Computer Section: " + computerSelection + "</p>"
+        //     "<p>Guess what letter I'm thinking of. </p>" +
+        //     "<p>Wins: " + wins + "</p>" +
+        //     "<p>Losses: " + losses + "</p>" +
+        //     "<p>Guesses Attempted: " + guessesAttempted + "</p>" +
+        //     "<p>Guesses Remaining: " + guessesRemaining + "</p>" +
+        //     "<p>Your Current Input: " + userGuess + "</p>" +    
+        //     // "<p>Your Current InputIndex: " + letterIndex + "</p>" +
+        //     "<p>Your Guesses so far: " + guessesSoFar.join(", ") + "</p>" +
+        //     //"<p>Current User Guess has already been used: " + userGuessAlreadyInArray + "</p>" +
+        //     "<p>Your Available Options: " + userRemainingChoices.join(", ") + "</p>";
+        //     //"<p>Computer Section: " + computerSelection + "</p>"
             
 
-        // Set the inner HTML contents of the #game div to our html string
-        document.querySelector("#game").innerHTML = html;
+        // // Set the inner HTML contents of the #game div to our html string
+        // document.querySelector("#game").innerHTML = html; // original attempt
+
+
+        //new attempt(much better) with DOM:
+        document.querySelector("#wins").innerHTML = "Wins: " + wins;
+        document.querySelector("#losses").innerHTML = "Losses: " + losses;
+        document.querySelector("#guessesRemaining").innerHTML = "Guesses Remaining: " + guessesRemaining;
+        document.querySelector("#guessesAttempted").innerHTML = "Guesses Attempted: " + guessesAttempted;
+        document.querySelector("#currentInput").innerHTML = "Your Current Guess: " + userGuess;
+        document.querySelector("#guessesSoFar").innerHTML = "Guesses So Far: " + guessesSoFar.join(", ");
+        document.querySelector("#userRemainingChoices").innerHTML = "Remaining Choices: " + userRemainingChoices.join(", ");
     }
 }
 
