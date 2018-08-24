@@ -7,7 +7,7 @@ body{
 header{
     text-align: center;
     width: 100%;
-    background-color: lavenderblush;
+    background-color: wheat;
     border-bottom: 1px solid gainsboro;
 }
 
@@ -31,29 +31,31 @@ footer{
 
 
 .main-container{
-    padding: 20px;
-    max-width: 60%;
+    padding: 30px;
+    max-width: 90%;
     margin: auto;
     border: 1px solid lightskyblue;
 }
 
-#left-banner,
-#right-banner{
-    border: 1px solid lightslategray;
-    max-height: 100%;
+
+.wizard{
+    display: block;
+    margin: auto;
+    padding:20px;
+    position: relative;
+    max-width: 100%;
+    height: auto;
 }
 
-#game{
-    text-align: left;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid green;
+#main-banner {
+    border: 1px solid lightslategray;
+    max-height: 100%;
+    margin:auto;
 }
 
 h1{
     padding: 10px;
 }
-
 
 p{
     margin: auto;

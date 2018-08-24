@@ -43,6 +43,7 @@ function userLose(){
 }
 
 function reset(){
+    userGuess = "";
     guessesSoFar.length = 0; 
     guessesAttempted = 0;
     guessesRemaining = 5;
